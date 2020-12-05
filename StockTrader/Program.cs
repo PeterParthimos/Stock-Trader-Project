@@ -8,17 +8,21 @@ namespace StockTrader
 {
     static class Program
     {
+        static List<User> users = new List<User>();
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
-        //[STAThread]
+        [STAThread]
         static void Main()
         {
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
-            List<string> res = SqlLiteDataAccess.LoadPeople();
-            Console.WriteLine(res[0][0]);
+
+            users = SqlLiteDataAccess.LoadPeople();
+
+            Console.WriteLine("Answer is here: " + users[0].CashBalance);
         }
     }
 }

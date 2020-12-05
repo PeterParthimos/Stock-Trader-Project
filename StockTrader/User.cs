@@ -8,16 +8,11 @@ namespace StockTrader
 {
     class User
     {
-        private decimal cashBalance;
-        private decimal bookCost;
-        private decimal marketValue;
-        private decimal totalValue;
-        private string lastLogin;
-        private List<Stock> stocks;
-
-        public User()
-        {
-            //TODO
-        }
+        public int Id { get; set; }
+        public decimal CashBalance { get; set; }
+        public decimal BookCost { get; set; }
+        public decimal MarketValue { get; set; }
+        public decimal TotalValue { get; set; }
+        public string LastLogin { get; set; }
     }
 }

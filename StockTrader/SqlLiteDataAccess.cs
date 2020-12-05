@@ -9,11 +9,11 @@ namespace StockTrader
 {
     class SqlLiteDataAccess
     {
-        public static List<string> LoadPeople()
+        public static List<User> LoadPeople()
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                var output = cnn.Query<string>("Select * From User", new DynamicParameters());
+                var output = cnn.Query<User>("Select * From User", new DynamicParameters());
                 return output.ToList();
             }
         }
