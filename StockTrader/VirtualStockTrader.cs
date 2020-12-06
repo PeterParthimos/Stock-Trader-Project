@@ -1,23 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace StockTrader
 {
     public partial class VirtualStockTrader : Form
     {
-        private User user;
+        static readonly List<User> userList = SqlLiteDataAccess.LoadUser();
+        private readonly User user = new User(userList);
 
         public VirtualStockTrader()
         {
             InitializeComponent();
-            user = new User();
             balanceLabel.Text = "$" + user.TotalValue;
             cashLabel.Text = "$" + user.CashBalance;
             marketLabel.Text = "$" + user.MarketValue;

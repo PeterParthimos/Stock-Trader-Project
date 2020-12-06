@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SQLite;
 using System.Linq;
+using System;
 
 namespace StockTrader
 {
@@ -13,6 +14,7 @@ namespace StockTrader
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
+                Console.WriteLine("Hello");
                 var output = cnn.Query<User>("SELECT * FROM User", new DynamicParameters());
                 return output.ToList();
             }

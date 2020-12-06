@@ -5,6 +5,7 @@ namespace StockTrader
 {
     class User
     {
+        public int ID { get; set; }
         public decimal CashBalance { get; set; }
         public decimal BookCost { get; set; }
         public decimal MarketValue { get; set; }
@@ -12,13 +13,17 @@ namespace StockTrader
         public double Growth { get; set; }
         public List<Stock> Stocks { get; set; }
 
+
+        public User() {}
+
+
         /// <summary>
         /// Constructor for User
         /// Retrieves user from database and populates variables
         /// </summary>
-        public User()
+        public User(List<User> user)
         {
-            List<User> user = SqlLiteDataAccess.LoadUser();
+            this.ID = user[0].ID;
             this.CashBalance = user[0].CashBalance;
             this.BookCost = user[0].BookCost;
             this.MarketValue = user[0].MarketValue;

@@ -77,3 +77,4 @@ D:\Programming\C#\FinalProjectGit\StockTrader\obj\Debug\StockTrader.csproj.CopyC
 D:\Programming\C#\FinalProjectGit\StockTrader\obj\Debug\StockTrader.exe
 D:\Programming\C#\FinalProjectGit\StockTrader\obj\Debug\StockTrader.pdb
 D:\Programming\C#\FinalProjectGit\StockTrader\obj\Debug\StockTrader.VirtualStockTrader.resources
+D:\School\5thSemester\AppDev\FinalProject\StockFinalProject\StockTrader\obj\Debug\StockTrader.VirtualStockTrader.resources
