@@ -14,7 +14,7 @@ namespace StockTrader
         public List<Stock> Stocks { get; set; }
 
 
-        public User() {}
+        public User() { }
 
 
         /// <summary>
@@ -30,6 +30,27 @@ namespace StockTrader
             this.TotalValue = user[0].TotalValue;
             this.Growth = user[0].Growth;
             this.Stocks = SqlLiteDataAccess.LoadStocks();
+            UpdateStockPrice();
+            UpdateDailyChange();
+        }
+
+        /// <summary>
+        /// Updates all stocks to the most current pricing
+        /// </summary>
+        public void UpdateStockPrice()
+        {
+            for (int i = 0; i < Stocks.Count; i++)
+            {
+                SqlLiteDataAccess.UpdateStockPrice(Stocks[i], Convert.ToDecimal(ConnectToApi.GetStockPrice(Stocks[i].Symbol)));
+            }
+        }
+
+        public void UpdateDailyChange()
+        {
+            for (int i = 0; i < Stocks.Count; i++)
+            {
+                Stocks[i].DailyChange = ConnectToApi.GetDailyChange(Stocks[i].Symbol);
+            }
         }
 
         /// <summary>
@@ -46,31 +67,31 @@ namespace StockTrader
             }
             else
             {
+                for (int i = 0; i < Stocks.Count; i++)
+                {
+                    if (Stocks[i].Symbol.Equals(symbol))
+                    {
+                        return Stocks[i];
+                    }
+                }
                 Stock newStock = new Stock(symbol.ToUpper(), Convert.ToDecimal(result), 0, ConnectToApi.GetDailyChange(symbol), 0);
                 return newStock;
             }
         }
 
-        public bool BuyStock(string symbol, int amount)
+        public bool BuyStock(Stock stock, int amount)
         {
-            Stock stock = SearchStock(symbol);
-            if (stock == null)
+            for (int i = 0; i < Stocks.Count; i++)
             {
-                return false;
-            }
-            else
-            {
-                for (int i = 0; i < Stocks.Count; i++)
+                if (Stocks[i].Symbol == stock.Symbol)
                 {
-                    if (Stocks[i].Symbol == stock.Symbol)
-                    {
-                        Stocks[i].Quantity += amount;
-                        SqlLiteDataAccess.IncreaseQuantity(symbol, amount);
-                        return true;
-                    }
+                    Stocks[i].Quantity += amount;
+                    SqlLiteDataAccess.IncreaseQuantity(stock, amount);
+                    return true;
                 }
-                return false;
             }
+            SqlLiteDataAccess.NewStock(stock, amount);
+            return true;
         }
     }
 }

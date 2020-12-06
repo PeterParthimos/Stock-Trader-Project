@@ -62,10 +62,18 @@ namespace StockTrader
             File.WriteAllText("stockdata.csv", results);
             DataFrame df = DataFrame.LoadCsv("stockdata.csv");
 
-            string close = ("" + df[0, 4]); //Gets the previous days closing price
-            decimal lastClose = Convert.ToDecimal(close);
-            double change = (double)(((currentPrice - lastClose) / lastClose) * 100); //Calculates the percent change between the current price and the previous close price
-            return change; //returns the result
+            try
+            {
+                string close = ("" + df[0, 4]); //Gets the previous days closing price
+                decimal lastClose = Convert.ToDecimal(close);
+                double change = (double)(((currentPrice - lastClose) / lastClose) * 100); //Calculates the percent change between the current price and the previous close price
+                return change; //returns the result
+            }
+            catch (ArgumentOutOfRangeException e)
+            {
+                return -200.00;
+            }
+            
         }
     }
 }

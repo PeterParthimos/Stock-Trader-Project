@@ -38,19 +38,38 @@ namespace StockTrader
             }
         }
 
-        public static void IncreaseQuantity(string symbol, int amount)
+        public static void IncreaseQuantity(Stock stock, int amount)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute($"UPDATE Stocks SET Quantity = Quantity + {amount} WHERE Symbol = {symbol};");
+                cnn.Execute($"UPDATE Stocks SET Quantity = Quantity + {amount} WHERE Symbol = {stock.Symbol};");
+                UpdateBookCost(stock, stock.Price, amount);
             }
         }
 
-        public static void NewStock(Stock symbol, int amount)
+        public static void NewStock(Stock stock, int amount)
+        {
+            decimal bookCost = stock.Price * amount;
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute($"INSERT INTO Stocks VALUES ('{stock.Symbol}', {stock.Price}, {amount}, {bookCost});");
+            }
+        }
+
+        public static void UpdateStockPrice(Stock stock, decimal newPrice)
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute($"INSERT INTO Stocks VALUES ();");
+                cnn.Execute($"UPDATE Stocks SET Price = {newPrice} WHERE Symbol = '{stock.Symbol}';");
+            }
+        }
+
+        public static void UpdateBookCost(Stock stock, decimal newPrice, int amount)
+        {
+            decimal bookCost = newPrice * amount;
+            using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
+            {
+                cnn.Execute($"UPDATE Stocks SET BookCost = BookCost + {bookCost} WHERE Symbol = '{stock.Symbol}';");
             }
         }
 

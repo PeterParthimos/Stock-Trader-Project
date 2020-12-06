@@ -193,6 +193,7 @@
             this.buyButton.TabIndex = 13;
             this.buyButton.Text = "Buy";
             this.buyButton.UseVisualStyleBackColor = true;
+            this.buyButton.Click += new System.EventHandler(this.buyButton_Click);
             // 
             // searchButton
             // 
@@ -203,6 +204,7 @@
             this.searchButton.TabIndex = 15;
             this.searchButton.Text = "Search Stocks";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // sellbutton
             // 
