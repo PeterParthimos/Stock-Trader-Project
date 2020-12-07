@@ -47,7 +47,7 @@ namespace StockTrader
         /// <summary>
         /// Searches for a stock and populates the boxes
         /// </summary>
-        private void searchButton_Click(object sender, System.EventArgs e)
+        private void SearchButton_Click(object sender, System.EventArgs e)
         {
             string symbol = searchBox.Text;
             Stock stock = user.SearchStock(symbol);
@@ -64,7 +64,7 @@ namespace StockTrader
         /// <summary>
         /// Opens the buy panel
         /// </summary>
-        private void buyButton_Click(object sender, EventArgs e)
+        private void BuyButton_Click(object sender, EventArgs e)
         {
             buyPanel.Visible = true;
             sellPanel.Visible = false;
@@ -77,7 +77,7 @@ namespace StockTrader
         /// <summary>
         /// Increases the cost text box
         /// </summary>
-        private void quantitySelectBuy_ValueChanged(object sender, EventArgs e)
+        private void QuantitySelectBuy_ValueChanged(object sender, EventArgs e)
         {
             decimal amount = quantitySelectBuy.Value;
             decimal cost = tempStock.Price * amount;
@@ -87,7 +87,7 @@ namespace StockTrader
         /// <summary>
         /// Confirms a buy
         /// </summary>
-        private void confirmBuyButton_Click(object sender, EventArgs e)
+        private void ConfirmBuyButton_Click(object sender, EventArgs e)
         {
             int amount = (int)quantitySelectBuy.Value;
             tempStock.Quantity += amount;
@@ -95,15 +95,18 @@ namespace StockTrader
             {
                 MessageBox.Show("Unable to buy stock!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            PopulateListView();
-            UpdateData();
-            buyPanel.Visible = false;
+            else
+            {
+                PopulateListView();
+                UpdateData();
+                buyPanel.Visible = false;
+            }
         }
 
         /// <summary>
         /// Opens the sell panel
         /// </summary>
-        private void sellbutton_Click(object sender, EventArgs e)
+        private void Sellbutton_Click(object sender, EventArgs e)
         {
             sellPanel.Visible = true;
             buyPanel.Visible = false;
@@ -116,22 +119,25 @@ namespace StockTrader
         /// <summary>
         /// Confirms a sell
         /// </summary>
-        private void confirmSellButton_Click(object sender, EventArgs e)
+        private void ConfirmSellButton_Click(object sender, EventArgs e)
         {
             int amount = (int)quantitySelectSell.Value;
             if (!user.SellStock(tempStock, amount))
             {
                 MessageBox.Show("You don't own enough stock to sell!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            PopulateListView();
-            UpdateData();
-            sellPanel.Visible = false;
+            else
+            {
+                PopulateListView();
+                UpdateData();
+                sellPanel.Visible = false;
+            }
         }
 
         /// <summary>
         /// Increases the income text box
         /// </summary>
-        private void quantitySelectSell_ValueChanged(object sender, EventArgs e)
+        private void QuantitySelectSell_ValueChanged(object sender, EventArgs e)
         {
             decimal amount = quantitySelectSell.Value;
             decimal cost = tempStock.Price * amount;

@@ -168,7 +168,7 @@
             this.buyButton.TabIndex = 13;
             this.buyButton.Text = "Buy";
             this.buyButton.UseVisualStyleBackColor = true;
-            this.buyButton.Click += new System.EventHandler(this.buyButton_Click);
+            this.buyButton.Click += new System.EventHandler(this.BuyButton_Click);
             // 
             // searchButton
             // 
@@ -179,7 +179,7 @@
             this.searchButton.TabIndex = 15;
             this.searchButton.Text = "Search Stocks";
             this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            this.searchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // sellbutton
             // 
@@ -191,7 +191,7 @@
             this.sellbutton.TabIndex = 16;
             this.sellbutton.Text = "Sell";
             this.sellbutton.UseVisualStyleBackColor = true;
-            this.sellbutton.Click += new System.EventHandler(this.sellbutton_Click);
+            this.sellbutton.Click += new System.EventHandler(this.Sellbutton_Click);
             // 
             // label10
             // 
@@ -329,7 +329,7 @@
             this.confirmBuyButton.TabIndex = 14;
             this.confirmBuyButton.Text = "Confirm Buy";
             this.confirmBuyButton.UseVisualStyleBackColor = true;
-            this.confirmBuyButton.Click += new System.EventHandler(this.confirmBuyButton_Click);
+            this.confirmBuyButton.Click += new System.EventHandler(this.ConfirmBuyButton_Click);
             // 
             // quantitySelectBuy
             // 
@@ -349,7 +349,7 @@
             0,
             0,
             0});
-            this.quantitySelectBuy.ValueChanged += new System.EventHandler(this.quantitySelectBuy_ValueChanged);
+            this.quantitySelectBuy.ValueChanged += new System.EventHandler(this.QuantitySelectBuy_ValueChanged);
             // 
             // label6
             // 
@@ -404,7 +404,7 @@
             this.confirmSellButton.TabIndex = 14;
             this.confirmSellButton.Text = "Confirm Sell";
             this.confirmSellButton.UseVisualStyleBackColor = true;
-            this.confirmSellButton.Click += new System.EventHandler(this.confirmSellButton_Click);
+            this.confirmSellButton.Click += new System.EventHandler(this.ConfirmSellButton_Click);
             // 
             // quantitySelectSell
             // 
@@ -424,7 +424,7 @@
             0,
             0,
             0});
-            this.quantitySelectSell.ValueChanged += new System.EventHandler(this.quantitySelectSell_ValueChanged);
+            this.quantitySelectSell.ValueChanged += new System.EventHandler(this.QuantitySelectSell_ValueChanged);
             // 
             // label13
             // 
