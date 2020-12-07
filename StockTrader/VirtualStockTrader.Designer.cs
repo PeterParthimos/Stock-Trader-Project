@@ -191,6 +191,7 @@
             this.sellbutton.TabIndex = 16;
             this.sellbutton.Text = "Sell";
             this.sellbutton.UseVisualStyleBackColor = true;
+            this.sellbutton.Click += new System.EventHandler(this.sellbutton_Click);
             // 
             // label10
             // 
@@ -293,8 +294,7 @@
             this.buyPanel.Controls.Add(this.confirmBuyButton);
             this.buyPanel.Controls.Add(this.quantitySelectBuy);
             this.buyPanel.Controls.Add(this.label6);
-            this.buyPanel.Controls.Add(this.sellPanel);
-            this.buyPanel.Location = new System.Drawing.Point(452, 225);
+            this.buyPanel.Location = new System.Drawing.Point(452, 222);
             this.buyPanel.Name = "buyPanel";
             this.buyPanel.Size = new System.Drawing.Size(320, 124);
             this.buyPanel.TabIndex = 26;
@@ -368,7 +368,7 @@
             this.sellPanel.Controls.Add(this.confirmSellButton);
             this.sellPanel.Controls.Add(this.quantitySelectSell);
             this.sellPanel.Controls.Add(this.label13);
-            this.sellPanel.Location = new System.Drawing.Point(0, 0);
+            this.sellPanel.Location = new System.Drawing.Point(452, 225);
             this.sellPanel.Name = "sellPanel";
             this.sellPanel.Size = new System.Drawing.Size(320, 124);
             this.sellPanel.TabIndex = 27;
@@ -404,6 +404,7 @@
             this.confirmSellButton.TabIndex = 14;
             this.confirmSellButton.Text = "Confirm Sell";
             this.confirmSellButton.UseVisualStyleBackColor = true;
+            this.confirmSellButton.Click += new System.EventHandler(this.confirmSellButton_Click);
             // 
             // quantitySelectSell
             // 
@@ -423,6 +424,7 @@
             0,
             0,
             0});
+            this.quantitySelectSell.ValueChanged += new System.EventHandler(this.quantitySelectSell_ValueChanged);
             // 
             // label13
             // 
@@ -440,6 +442,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(784, 361);
+            this.Controls.Add(this.sellPanel);
             this.Controls.Add(this.buyPanel);
             this.Controls.Add(this.stockView);
             this.Controls.Add(this.bookLabel);
@@ -467,6 +470,7 @@
             this.Name = "VirtualStockTrader";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Virtual Stock Trader";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VirtualStockTrader_FormClosing);
             this.buyPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.quantitySelectBuy)).EndInit();
             this.sellPanel.ResumeLayout(false);

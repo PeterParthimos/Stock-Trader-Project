@@ -33,10 +33,6 @@ namespace StockTrader
                 //Gets the most current stock price from the list and returns it
                 return ("" + df[0, 4]);
             }
-            catch (ArgumentOutOfRangeException e) //Exception is thrown if 5 calls is passed
-            {
-                return "wait";
-            }
             catch (Exception e) //Exception is thrown if stock isnt real
             {
                 return "null";

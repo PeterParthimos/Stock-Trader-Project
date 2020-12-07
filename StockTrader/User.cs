@@ -11,7 +11,6 @@ namespace StockTrader
         public decimal MarketValue { get; set; }
         public decimal TotalValue { get; set; }
         public List<Stock> Stocks { get; set; }
-        public int stockNum { get; set; }
 
         public User() { }
 
@@ -27,7 +26,6 @@ namespace StockTrader
             this.BookCost = user[0].BookCost;
             this.MarketValue = user[0].MarketValue;
             this.Stocks = SqlLiteDataAccess.LoadStocks();
-            this.stockNum = this.Stocks.Count;
             UpdateStockPrice();
             UpdateTotalValue();
             UpdateMarketValue();
@@ -82,12 +80,7 @@ namespace StockTrader
             string result = ConnectToApi.GetStockPrice(symbol);
             if (result.Equals("null"))
             {
-                Stock badStock = new Stock("Invalid!", 0.0M, 0, 0);
-                return badStock;
-            }
-            else if (result.Equals("wait"))
-            {
-                Stock badStock = new Stock("Please wait 1 minute!", 0.0M, 0, 0);
+                Stock badStock = new Stock("Unable to retrieve data!", 0.0M, 0, 0);
                 return badStock;
             }
             else
@@ -113,12 +106,12 @@ namespace StockTrader
         public bool BuyStock(Stock stock, int amount)
         {
             decimal cost = stock.Price * amount;
+            int stockNum = Stocks.Count;
 
             for (int i = 0; i < Stocks.Count; i++)
             {
                 if (Stocks[i].Symbol == stock.Symbol && CashBalance >= cost)
                 {
-                    Stocks[i].Quantity += amount;
                     SqlLiteDataAccess.IncreaseQuantity(stock, amount);
                     CashBalance -= cost;
                     MarketValue += cost;
@@ -140,6 +133,39 @@ namespace StockTrader
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Sells a stock
+        /// </summary>
+        /// <param name="stock"> the stock to sell </param>
+        /// <param name="amount"> the amount to sell </param>
+        /// <returns> true if sold successfully </returns>
+        public bool SellStock(Stock stock, int amount)
+        {
+            decimal income = stock.Price * amount;
+
+            for (int i = 0; i < Stocks.Count; i++)
+            {
+                if (Stocks[i].Symbol == stock.Symbol && amount < stock.Quantity)
+                {
+                    SqlLiteDataAccess.DecreaseQuantity(stock, amount);
+                    CashBalance += income;
+                    BookCost -= income;
+                    Stocks[i].Quantity -= amount;
+                    Stocks[i].BookCost -= income;
+                    return true;
+                }
+                else if (Stocks[i].Symbol == stock.Symbol && amount == stock.Quantity)
+                {
+                    SqlLiteDataAccess.DeleteStock(stock);
+                    CashBalance += income;
+                    BookCost -= income;
+                    Stocks.RemoveAt(i);
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
