@@ -42,7 +42,7 @@ namespace StockTrader
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                cnn.Execute($"UPDATE Stocks SET Quantity = Quantity + {amount} WHERE Symbol = {stock.Symbol};");
+                cnn.Execute($"UPDATE Stocks SET Quantity = Quantity + {amount} WHERE Symbol = '{stock.Symbol}';");
                 UpdateBookCost(stock, stock.Price, amount);
             }
         }
