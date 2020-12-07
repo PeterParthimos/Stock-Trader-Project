@@ -10,9 +10,8 @@ namespace StockTrader
         public decimal BookCost { get; set; }
         public decimal MarketValue { get; set; }
         public decimal TotalValue { get; set; }
-        public double Growth { get; set; }
         public List<Stock> Stocks { get; set; }
-
+        public int stockNum { get; set; }
 
         public User() { }
 
@@ -27,11 +26,11 @@ namespace StockTrader
             this.CashBalance = user[0].CashBalance;
             this.BookCost = user[0].BookCost;
             this.MarketValue = user[0].MarketValue;
-            this.TotalValue = user[0].TotalValue;
-            this.Growth = user[0].Growth;
             this.Stocks = SqlLiteDataAccess.LoadStocks();
+            this.stockNum = this.Stocks.Count;
             UpdateStockPrice();
-            UpdateDailyChange();
+            UpdateTotalValue();
+            UpdateMarketValue();
         }
 
         /// <summary>
@@ -41,16 +40,36 @@ namespace StockTrader
         {
             for (int i = 0; i < Stocks.Count; i++)
             {
-                SqlLiteDataAccess.UpdateStockPrice(Stocks[i], Convert.ToDecimal(ConnectToApi.GetStockPrice(Stocks[i].Symbol)));
+                decimal newPrice = Convert.ToDecimal(ConnectToApi.GetStockPrice(Stocks[i].Symbol));
+                SqlLiteDataAccess.UpdateStockPrice(Stocks[i], newPrice);
             }
         }
 
-        public void UpdateDailyChange()
+        /// <summary>
+        /// Updates the users total value
+        /// </summary>
+        public void UpdateTotalValue()
         {
+            decimal total = 0;
             for (int i = 0; i < Stocks.Count; i++)
             {
-                Stocks[i].DailyChange = ConnectToApi.GetDailyChange(Stocks[i].Symbol);
+                total += Stocks[i].Price * Stocks[i].Quantity;
             }
+            total += this.CashBalance;
+            this.TotalValue = total;
+        }
+
+        /// <summary>
+        /// Updates the users market value
+        /// </summary>
+        public void UpdateMarketValue()
+        {
+            decimal total = 0;
+            for (int i = 0; i < Stocks.Count; i++)
+            {
+                total += Stocks[i].Price * Stocks[i].Quantity;
+            }
+            this.MarketValue = total;
         }
 
         /// <summary>
@@ -61,9 +80,15 @@ namespace StockTrader
         public Stock SearchStock(string symbol)
         {
             string result = ConnectToApi.GetStockPrice(symbol);
-            if (result == null)
+            if (result.Equals("null"))
             {
-                return null;
+                Stock badStock = new Stock("Invalid!", 0.0M, 0, 0);
+                return badStock;
+            }
+            else if (result.Equals("wait"))
+            {
+                Stock badStock = new Stock("Please wait 1 minute!", 0.0M, 0, 0);
+                return badStock;
             }
             else
             {
@@ -74,24 +99,47 @@ namespace StockTrader
                         return Stocks[i];
                     }
                 }
-                Stock newStock = new Stock(symbol.ToUpper(), Convert.ToDecimal(result), 0, ConnectToApi.GetDailyChange(symbol), 0);
+                Stock newStock = new Stock(symbol.ToUpper(), Convert.ToDecimal(result), 0.0M, 0);
                 return newStock;
             }
         }
 
+        /// <summary>
+        /// Buys a stock 
+        /// </summary>
+        /// <param name="stock"> the stock to buy </param>
+        /// <param name="amount">the amount to buy </param>
+        /// <returns> true if bought successfully </returns>
         public bool BuyStock(Stock stock, int amount)
         {
+            decimal cost = stock.Price * amount;
+
             for (int i = 0; i < Stocks.Count; i++)
             {
-                if (Stocks[i].Symbol == stock.Symbol)
+                if (Stocks[i].Symbol == stock.Symbol && CashBalance >= cost)
                 {
                     Stocks[i].Quantity += amount;
                     SqlLiteDataAccess.IncreaseQuantity(stock, amount);
+                    CashBalance -= cost;
+                    MarketValue += cost;
+                    BookCost += cost;
                     return true;
                 }
             }
-            SqlLiteDataAccess.NewStock(stock, amount);
-            return true;
+            if (stockNum < 5 && CashBalance >= cost)
+            {
+                CashBalance -= cost;
+                MarketValue += cost;
+                BookCost += cost;
+                SqlLiteDataAccess.NewStock(stock, amount);
+                stock.BookCost += cost;
+                Stocks.Add(stock);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

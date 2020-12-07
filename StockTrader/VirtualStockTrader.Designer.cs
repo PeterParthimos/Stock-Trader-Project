@@ -34,11 +34,9 @@
             this.searchBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.symbolLabel = new System.Windows.Forms.Label();
             this.priceLabel = new System.Windows.Forms.Label();
-            this.changeLabel = new System.Windows.Forms.Label();
             this.quantityLabel = new System.Windows.Forms.Label();
             this.buyButton = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
@@ -49,13 +47,10 @@
             this.cashLabel = new System.Windows.Forms.Label();
             this.marketLabel = new System.Windows.Forms.Label();
             this.bookLabel = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.growthLabel = new System.Windows.Forms.Label();
             this.stockView = new System.Windows.Forms.ListView();
             this.symbolHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.quantityHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.priceHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.changeHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.bookHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buyPanel = new System.Windows.Forms.Panel();
             this.costLabelBuy = new System.Windows.Forms.Label();
@@ -78,18 +73,18 @@
             // balanceLabel
             // 
             this.balanceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.balanceLabel.Location = new System.Drawing.Point(168, 2);
+            this.balanceLabel.Location = new System.Drawing.Point(192, 2);
             this.balanceLabel.Name = "balanceLabel";
-            this.balanceLabel.Size = new System.Drawing.Size(256, 42);
+            this.balanceLabel.Size = new System.Drawing.Size(232, 42);
             this.balanceLabel.TabIndex = 1;
             this.balanceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Impact", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(11, 2);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 42);
+            this.label1.Size = new System.Drawing.Size(185, 42);
             this.label1.TabIndex = 2;
             this.label1.Text = "Current Balance: ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -106,7 +101,7 @@
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.label2.Location = new System.Drawing.Point(449, 69);
+            this.label2.Location = new System.Drawing.Point(449, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(134, 27);
             this.label2.TabIndex = 5;
@@ -116,27 +111,17 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(449, 105);
+            this.label3.Location = new System.Drawing.Point(449, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(134, 27);
             this.label3.TabIndex = 6;
             this.label3.Text = "Current Price:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(449, 141);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(134, 27);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Daily Change:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(449, 177);
+            this.label5.Location = new System.Drawing.Point(446, 136);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(134, 27);
             this.label5.TabIndex = 8;
@@ -147,7 +132,7 @@
             // 
             this.symbolLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.symbolLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.symbolLabel.Location = new System.Drawing.Point(589, 69);
+            this.symbolLabel.Location = new System.Drawing.Point(589, 60);
             this.symbolLabel.Name = "symbolLabel";
             this.symbolLabel.Size = new System.Drawing.Size(183, 27);
             this.symbolLabel.TabIndex = 9;
@@ -157,27 +142,17 @@
             // 
             this.priceLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.priceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceLabel.Location = new System.Drawing.Point(589, 105);
+            this.priceLabel.Location = new System.Drawing.Point(589, 98);
             this.priceLabel.Name = "priceLabel";
             this.priceLabel.Size = new System.Drawing.Size(183, 27);
             this.priceLabel.TabIndex = 10;
             this.priceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // changeLabel
-            // 
-            this.changeLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.changeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changeLabel.Location = new System.Drawing.Point(589, 141);
-            this.changeLabel.Name = "changeLabel";
-            this.changeLabel.Size = new System.Drawing.Size(183, 27);
-            this.changeLabel.TabIndex = 11;
-            this.changeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // quantityLabel
             // 
             this.quantityLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.quantityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantityLabel.Location = new System.Drawing.Point(589, 177);
+            this.quantityLabel.Location = new System.Drawing.Point(589, 136);
             this.quantityLabel.Name = "quantityLabel";
             this.quantityLabel.Size = new System.Drawing.Size(183, 27);
             this.quantityLabel.TabIndex = 12;
@@ -187,7 +162,7 @@
             // 
             this.buyButton.Enabled = false;
             this.buyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buyButton.Location = new System.Drawing.Point(489, 228);
+            this.buyButton.Location = new System.Drawing.Point(489, 176);
             this.buyButton.Name = "buyButton";
             this.buyButton.Size = new System.Drawing.Size(94, 30);
             this.buyButton.TabIndex = 13;
@@ -210,7 +185,7 @@
             // 
             this.sellbutton.Enabled = false;
             this.sellbutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sellbutton.Location = new System.Drawing.Point(642, 228);
+            this.sellbutton.Location = new System.Drawing.Point(640, 176);
             this.sellbutton.Name = "sellbutton";
             this.sellbutton.Size = new System.Drawing.Size(94, 30);
             this.sellbutton.TabIndex = 16;
@@ -240,7 +215,7 @@
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(12, 125);
+            this.label12.Location = new System.Drawing.Point(12, 98);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(113, 27);
             this.label12.TabIndex = 19;
@@ -268,30 +243,11 @@
             // bookLabel
             // 
             this.bookLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bookLabel.Location = new System.Drawing.Point(131, 125);
+            this.bookLabel.Location = new System.Drawing.Point(131, 98);
             this.bookLabel.Name = "bookLabel";
             this.bookLabel.Size = new System.Drawing.Size(293, 27);
             this.bookLabel.TabIndex = 22;
             this.bookLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label16
-            // 
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(12, 98);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(113, 27);
-            this.label16.TabIndex = 23;
-            this.label16.Text = "Growth:";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // growthLabel
-            // 
-            this.growthLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.growthLabel.Location = new System.Drawing.Point(131, 98);
-            this.growthLabel.Name = "growthLabel";
-            this.growthLabel.Size = new System.Drawing.Size(293, 27);
-            this.growthLabel.TabIndex = 24;
-            this.growthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // stockView
             // 
@@ -300,13 +256,12 @@
             this.symbolHeader,
             this.quantityHeader,
             this.priceHeader,
-            this.changeHeader,
             this.bookHeader});
             this.stockView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.stockView.HideSelection = false;
-            this.stockView.Location = new System.Drawing.Point(15, 162);
+            this.stockView.Location = new System.Drawing.Point(12, 141);
             this.stockView.Name = "stockView";
-            this.stockView.Size = new System.Drawing.Size(409, 237);
+            this.stockView.Size = new System.Drawing.Size(412, 208);
             this.stockView.TabIndex = 25;
             this.stockView.UseCompatibleStateImageBehavior = false;
             this.stockView.View = System.Windows.Forms.View.Details;
@@ -314,27 +269,22 @@
             // symbolHeader
             // 
             this.symbolHeader.Text = "Stock";
-            this.symbolHeader.Width = 81;
+            this.symbolHeader.Width = 102;
             // 
             // quantityHeader
             // 
             this.quantityHeader.Text = "Quantity";
-            this.quantityHeader.Width = 81;
+            this.quantityHeader.Width = 102;
             // 
             // priceHeader
             // 
             this.priceHeader.Text = "Price";
-            this.priceHeader.Width = 81;
-            // 
-            // changeHeader
-            // 
-            this.changeHeader.Text = "Change";
-            this.changeHeader.Width = 81;
+            this.priceHeader.Width = 102;
             // 
             // bookHeader
             // 
             this.bookHeader.Text = "BookCost";
-            this.bookHeader.Width = 81;
+            this.bookHeader.Width = 102;
             // 
             // buyPanel
             // 
@@ -343,7 +293,8 @@
             this.buyPanel.Controls.Add(this.confirmBuyButton);
             this.buyPanel.Controls.Add(this.quantitySelectBuy);
             this.buyPanel.Controls.Add(this.label6);
-            this.buyPanel.Location = new System.Drawing.Point(452, 275);
+            this.buyPanel.Controls.Add(this.sellPanel);
+            this.buyPanel.Location = new System.Drawing.Point(452, 225);
             this.buyPanel.Name = "buyPanel";
             this.buyPanel.Size = new System.Drawing.Size(320, 124);
             this.buyPanel.TabIndex = 26;
@@ -378,15 +329,27 @@
             this.confirmBuyButton.TabIndex = 14;
             this.confirmBuyButton.Text = "Confirm Buy";
             this.confirmBuyButton.UseVisualStyleBackColor = true;
+            this.confirmBuyButton.Click += new System.EventHandler(this.confirmBuyButton_Click);
             // 
             // quantitySelectBuy
             // 
             this.quantitySelectBuy.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quantitySelectBuy.Location = new System.Drawing.Point(154, 10);
+            this.quantitySelectBuy.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.quantitySelectBuy.Name = "quantitySelectBuy";
             this.quantitySelectBuy.Size = new System.Drawing.Size(98, 24);
             this.quantitySelectBuy.TabIndex = 2;
             this.quantitySelectBuy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.quantitySelectBuy.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.quantitySelectBuy.ValueChanged += new System.EventHandler(this.quantitySelectBuy_ValueChanged);
             // 
             // label6
             // 
@@ -405,7 +368,7 @@
             this.sellPanel.Controls.Add(this.confirmSellButton);
             this.sellPanel.Controls.Add(this.quantitySelectSell);
             this.sellPanel.Controls.Add(this.label13);
-            this.sellPanel.Location = new System.Drawing.Point(452, 275);
+            this.sellPanel.Location = new System.Drawing.Point(0, 0);
             this.sellPanel.Name = "sellPanel";
             this.sellPanel.Size = new System.Drawing.Size(320, 124);
             this.sellPanel.TabIndex = 27;
@@ -419,6 +382,7 @@
             this.costLabelSell.Name = "costLabelSell";
             this.costLabelSell.Size = new System.Drawing.Size(98, 23);
             this.costLabelSell.TabIndex = 16;
+            this.costLabelSell.Text = "$0";
             this.costLabelSell.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label9
@@ -445,10 +409,20 @@
             // 
             this.quantitySelectSell.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quantitySelectSell.Location = new System.Drawing.Point(154, 10);
+            this.quantitySelectSell.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.quantitySelectSell.Name = "quantitySelectSell";
             this.quantitySelectSell.Size = new System.Drawing.Size(98, 24);
             this.quantitySelectSell.TabIndex = 2;
             this.quantitySelectSell.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.quantitySelectSell.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label13
             // 
@@ -465,12 +439,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(784, 411);
-            this.Controls.Add(this.sellPanel);
+            this.ClientSize = new System.Drawing.Size(784, 361);
             this.Controls.Add(this.buyPanel);
             this.Controls.Add(this.stockView);
-            this.Controls.Add(this.growthLabel);
-            this.Controls.Add(this.label16);
             this.Controls.Add(this.bookLabel);
             this.Controls.Add(this.marketLabel);
             this.Controls.Add(this.cashLabel);
@@ -481,11 +452,9 @@
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.buyButton);
             this.Controls.Add(this.quantityLabel);
-            this.Controls.Add(this.changeLabel);
             this.Controls.Add(this.priceLabel);
             this.Controls.Add(this.symbolLabel);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.searchBox);
@@ -493,8 +462,8 @@
             this.Controls.Add(this.balanceLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(800, 450);
-            this.MinimumSize = new System.Drawing.Size(800, 450);
+            this.MaximumSize = new System.Drawing.Size(800, 400);
+            this.MinimumSize = new System.Drawing.Size(800, 400);
             this.Name = "VirtualStockTrader";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Virtual Stock Trader";
@@ -513,11 +482,9 @@
         private System.Windows.Forms.TextBox searchBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label symbolLabel;
         private System.Windows.Forms.Label priceLabel;
-        private System.Windows.Forms.Label changeLabel;
         private System.Windows.Forms.Label quantityLabel;
         private System.Windows.Forms.Button buyButton;
         private System.Windows.Forms.Button searchButton;
@@ -528,13 +495,10 @@
         private System.Windows.Forms.Label cashLabel;
         private System.Windows.Forms.Label marketLabel;
         private System.Windows.Forms.Label bookLabel;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label growthLabel;
         private System.Windows.Forms.ListView stockView;
         private System.Windows.Forms.ColumnHeader symbolHeader;
         private System.Windows.Forms.ColumnHeader quantityHeader;
         private System.Windows.Forms.ColumnHeader priceHeader;
-        private System.Windows.Forms.ColumnHeader changeHeader;
         private System.Windows.Forms.ColumnHeader bookHeader;
         private System.Windows.Forms.Panel buyPanel;
         private System.Windows.Forms.NumericUpDown quantitySelectBuy;
