@@ -18,7 +18,6 @@ namespace StockTrader
         {
             using (IDbConnection cnn = new SQLiteConnection(LoadConnectionString()))
             {
-                Console.WriteLine("Hello");
                 var output = cnn.Query<User>("SELECT * FROM User", new DynamicParameters());
                 return output.ToList();
             }

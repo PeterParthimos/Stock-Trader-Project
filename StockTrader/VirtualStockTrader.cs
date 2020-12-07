@@ -54,11 +54,21 @@ namespace StockTrader
             this.tempStock = stock;
             searchBox.Text = "";
             symbolLabel.Text = stock.Symbol;
-            priceLabel.Text = "$" + Decimal.Round(stock.Price, 2);
-            quantityLabel.Text = stock.Quantity + "";
-            buyButton.Enabled = true;
-            buyButton.Enabled = true;
-            sellbutton.Enabled = true;
+            
+            if (stock.Symbol.Equals("Unable to retrieve data!"))
+            {
+                buyButton.Enabled = false;
+                sellbutton.Enabled = false;
+                priceLabel.Text = "";
+                quantityLabel.Text = "";
+            }
+            else
+            {
+                buyButton.Enabled = true;
+                sellbutton.Enabled = true;
+                priceLabel.Text = "$" + Decimal.Round(stock.Price, 2);
+                quantityLabel.Text = stock.Quantity + "";
+            }
         }
 
         /// <summary>
